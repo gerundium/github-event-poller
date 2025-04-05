@@ -1,0 +1,13 @@
+# Ignore these
+build/**
+container/**
+kubernetes/**
+
+# Exclude these from gitignore
+!build/Containerfile
+!build/github-event-poller.py
+
+!container/.env.example
+
+!kubernetes/ConfigMap.yaml.example
+!kubernetes/Deployment.yaml

@@ -1,0 +1,21 @@
+FROM python:3.12-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the script into the container
+COPY github-event-poller.py /app/github-event-poller.py
+
+# Install dependencies
+RUN pip install requests
+
+# Set environment variables (these should be overridden at runtime)
+ENV GITHUB_REPO=""
+ENV GITHUB_BRANCH=""
+ENV GITHUB_TOKEN=""
+ENV TRIGGER_URL=""
+ENV DOCKER_IMAGE_URL=""
+ENV CHECK_INTERVAL=""
+
+# Run the script
+CMD ["python", "-u", "github-event-poller.py"]

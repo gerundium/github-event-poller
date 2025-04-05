@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: github-event-poller
+  name: github-event-poller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: github-event-poller
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: github-event-poller
+    spec:
+      containers:
+      - image: docker.io/gerundium/github-event-poller:latest
+        name: github-event-poller
+        imagePullPolicy: IfNotPresent
+        resources: 
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits: 
+            cpu: "250m"
+            memory: "128Mi"
+        envFrom:
+          - configMapRef:
+              name: github-event-poller-config
