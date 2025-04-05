@@ -4,6 +4,7 @@ metadata:
   labels:
     app: github-event-poller
   name: github-event-poller
+  namespace: argo-events
 spec:
   replicas: 1
   selector:

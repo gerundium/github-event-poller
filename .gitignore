@@ -11,3 +11,4 @@ kubernetes/**
 
 !kubernetes/ConfigMap.yaml.example
 !kubernetes/Deployment.yaml
+!kubernetes/Secret-docker.yaml.example
